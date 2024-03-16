@@ -1,0 +1,21 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import nibabel as nib
+
+mask_file = 'C:/Users/user/Desktop/Nouveau dossier/input folder/ADNI_027_S_0404_MR_MPR__GradWarp__B1_Correction__N3__Scaled_Br_20080522115340039_S49987_I106467.nii'
+crop_file = 'C:/Users/user/Desktop/Nouveau dossier/subsampled_image.nii'
+
+test_mask = nib.load(mask_file).get_fdata()
+test_crop = nib.load(crop_file).get_fdata()
+slice_w = 25
+slice_v = 25
+
+fig, (ax2, ax3) = plt.subplots(1, 2, figsize=(10, 5))
+
+ax2.imshow(test_mask[test_mask.shape[0] // 2 - slice_w])
+ax2.set_title('mask')
+
+ax3.imshow(test_crop[test_crop.shape[0] // 2 - slice_v])
+ax3.set_title('crop')
+
+plt.show()
